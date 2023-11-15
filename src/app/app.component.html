@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<header>
+    <h1><span>{{title}}</span></h1>
+    <nav>
+        <ul>
+          <li><a routerLink="/restaurants">Restaurants</a></li>
+          <li><a routerLink="/cart">Cart</a></li>
+          <li><a routerLink="/records">Order Records</a></li>
+          <li><a routerLink="/tracking">Order Tracking</a></li>  
+            <li style="float: right;"><a routerLink="/login">Login</a></li>
+            <li style="float: right;"><a routerLink="/signup">Sign Up</a></li>
+
+        </ul>
+      </nav>
+</header>
+<div class="wrapper">
+    <router-outlet></router-outlet>
+</div>

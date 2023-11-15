@@ -1,0 +1,45 @@
+header{
+    background-color:burlywood;
+    background-image: linear-gradient(to bottom, burlywood, burlywood);
+    background-size: cover;
+    height:110px;
+}
+h1{
+    border-top: 10px;
+    margin: 30px;
+}
+nav{
+    background-color: bisque;
+    height: 30px;
+    width: 99%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+nav ul{
+    display: inline;
+}
+nav li{
+    display:inline;
+    margin-left: 20px;
+    float: left ;
+}
+nav a:link{
+    text-decoration: none;
+}
+nav a{
+    font-size:18px;
+  }
+  
+nav a:hover {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+
+.wrapper{
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
