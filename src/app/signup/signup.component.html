@@ -2,17 +2,18 @@
     <form action="" method="get">
                 <fieldset><legend>Sign Up</legend>
                     <label for="username">Username</label>
-                    <div><input type="text" name="username" id="username" size="50"></div>
+                    <div><input type="text" name="username" id="username" size="50" (input)="onUsernameChange($event)"></div>
                     <br>
                     <label for="password">Password</label>
-                    <div><input type="text" name="password" id="password" size="50"></div>
+                    <div><input type="text" name="password" id="password" size="50" (input)="onPasswordChange($event)"></div>
                     <br>
                     <label for="mobile">Phone Number</label>
-                    <div><input type="text" name="mobile" id="mobile" size="20"></div>
+                    <div><input type="text" name="mobile" id="mobile" size="20" (input)="onPhoneChange($event)"></div>
                     <br>
                     <label for="email">Email</label>
-                    <div><input type="text" name="email" id="email" size="50"></div>
+                    <div><input type="text" name="email" id="email" size="50" (input)="onEmailChange($event)"></div>
                 </fieldset>
-    <div><input type="submit" name="submit" id="submit"> <input type="reset"></div>
+                {{report}}
+    <div><button type="button" name="submit" id="submit" (click)="onSubmit()">Sign Up</button> <input type="reset" (click)="onReset()"></div>
     </form>
 </main>

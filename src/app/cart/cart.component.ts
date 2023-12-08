@@ -2,6 +2,8 @@ import { Component,Input } from '@angular/core';
 import { CommonModule,NgSwitch } from '@angular/common';
 import { Cart } from '../cart';
 import { CARTS } from '../mock-carts';
+import { getCookieAuth } from '../AuthService';
+import { USERS } from '../mock-user';
 
 @Component({
   selector: 'app-cart',
@@ -15,13 +17,19 @@ import { CARTS } from '../mock-carts';
 export class CartComponent {
   cartid = 1;
   cart = CARTS[this.cartid]
-  updateCart(){
-    if(this.cartid < 8){
-      this.cartid = this.cartid +1;
-    }
-    else{
-      this.cartid = 1;
+  username = getCookieAuth();
+
+  constructor()
+  {
+    for(let i = 0; i < USERS.length; i++)
+    {
+      if(USERS[i].username == this.username)
+      {
+        this.cartid = USERS[i].id;
+      }
     }
     this.cart = CARTS[this.cartid];
   }
+
+  
 }
