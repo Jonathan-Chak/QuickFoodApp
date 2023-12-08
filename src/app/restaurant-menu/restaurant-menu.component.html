@@ -1,1 +1,11 @@
-<p>restaurant-menu works!</p>
+<div>
+
+    <h1>{{restaurantName}}</h1>
+
+    <ul>
+        <li *ngFor="let item of menu; index as i;" style="border: 20px; list-style-type: none;">
+            <button  style="margin: 10px;">{{item.name}}</button>
+            <span  style="margin: 10px;">${{item.price}}</span>
+        </li>
+    </ul>
+</div>

@@ -2,11 +2,20 @@
     <input type="text" placeholder="Search by name"> <button>Search</button>
     <h2>Restaruant List</h2>
     <ul class="restaurants">
-        <li *ngFor="let restaurant of restaurants" style="margin-bottom: 20px; list-style-type:none;">
-            <button href="" (click)="goToMenu($event)">
-                <span id={{restaurant.id}}>{{restaurant.name}}</span>
-            </button>
-            
+        <li>
+            <button id="1" (click)="goToMenu1()"> KFC</button>
+        </li>
+        <li>
+            <button id="2" (click)="goToMenu2()"> Papa Johns</button>
+        </li>
+        <li>
+            <button id="3" (click)="goToMenu3()"> Subway</button>
+        </li>
+        <li>
+            <button id="4" (click)="goToMenu4()"> Tim Hortons</button>
+        </li>
+        <li>
+            <button id="5" (click)="goToMenu5()"> Ruby Wednesday</button>
         </li>
     </ul>
 </div>
