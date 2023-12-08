@@ -3,10 +3,10 @@
     <h2>Restaruant List</h2>
     <ul class="restaurants">
         <li *ngFor="let restaurant of restaurants" style="margin-bottom: 20px; list-style-type:none;">
-            <button style="font-size: large;">
-                <span>{{restaurant.id}} </span>|
-                <span>{{restaurant.name}}</span>
+            <button href="" (click)="goToMenu($event)">
+                <span id={{restaurant.id}}>{{restaurant.name}}</span>
             </button>
+            
         </li>
     </ul>
 </div>
