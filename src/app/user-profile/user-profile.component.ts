@@ -24,23 +24,21 @@ export class UserProfileComponent {
       this.loggedInName = getCookieAuth();
 
       if(this.loggedInName == getCookieUsername())
-    {
-      this.userid = -1;
-    }
-    else{
-      for(let i = 0; i < USERS.length; i++)
       {
-        if(this.loggedInName == USERS[i].username)
+        this.userid = -1;
+        this.password = getCookiePassword();
+      }
+      else
+      {
+        for(let i = 0; i < USERS.length; i++)
+        {
+          if(this.loggedInName == USERS[i].username)
           {
             this.userid = USERS[i].id;
             this.password = USERS[i].password;
           }
+        }
       }
-      //gets local password
-      this.password = getCookiePassword();
-    }
-
-      
     }
   }
 }
