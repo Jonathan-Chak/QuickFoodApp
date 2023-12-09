@@ -18,7 +18,7 @@ export class UserProfileComponent {
   
   constructor()
   {
-    if(getCookieAuth() != "")
+    if(getCookieAuth() != "")//if logged in
     {
       this.loggedInRole = getCookieRole();
       this.loggedInName = getCookieAuth();
@@ -27,15 +27,20 @@ export class UserProfileComponent {
     {
       this.userid = -1;
     }
-
-    for(let i = 0; i < USERS.length; i++)
-    {
-      if(this.loggedInName == USERS[i].username)
-        {
-          this.userid = USERS[i].id;
-          this.password = USERS[i].password;
-        }
+    else{
+      for(let i = 0; i < USERS.length; i++)
+      {
+        if(this.loggedInName == USERS[i].username)
+          {
+            this.userid = USERS[i].id;
+            this.password = USERS[i].password;
+          }
+      }
+      //gets local password
+      this.password = getCookiePassword();
     }
+
+      
     }
   }
 }
