@@ -7,13 +7,16 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { OrderTrackingComponent } from './order-tracking/order-tracking.component';
 import { RestaurantMenuComponent } from './restaurant-menu/restaurant-menu.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 export const routes: Routes = [
+    {path: '', pathMatch: 'full',redirectTo: 'restaurants'},
     {path: 'restaurants', component: RestaurantListComponent},
     {path: 'cart', component: CartComponent},
     {path: 'records', component: OrderRecordsComponent},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'tracking', component: OrderTrackingComponent},
-    {path: 'menu', component:RestaurantMenuComponent}
+    {path: 'menu', component:RestaurantMenuComponent},
+    {path: 'profile', component:UserProfileComponent}
 ];

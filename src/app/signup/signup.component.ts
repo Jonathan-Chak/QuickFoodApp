@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { USERS } from '../mock-user';
+import { getCookieUsername,getCookiePassword,getCookieAuth,getCookieRole } from '../AuthService';
 
 @Component({
   selector: 'app-signup',
@@ -37,39 +38,6 @@ export class SignupComponent {
     this.email = value;
   }
 
-  //Read Cookie
-  public getCookieUsername() {
-    let name = "localUsername" + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-  public getCookiePassword() {
-    let name = "localPassword" + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-
-
   public onSubmit()
   {
     if(this.username !="" && this.password !="")//check if fields not empty
@@ -82,12 +50,13 @@ export class SignupComponent {
             hit = true;
           }
       }
-      if(this.username != this.getCookieUsername() && hit == false) //check if username is not repeated then literally replaces it
+      if(this.username !=getCookieUsername() && hit == false) //check if username is not repeated then literally replaces it
       {
         var date = new Date();
         date.setTime(date.getTime() + (2 * 24 * 60 * 60 * 1000));
         document.cookie = "localUsername="+this.username + "; expires=" + date;
         document.cookie = "localPassword="+this.password + "; expires=" + date;
+        document.cookie = "localRole="+"user" + "; expires=" + date; //set role to user
         this.report = "Registered as " + this.username;
       }
       else

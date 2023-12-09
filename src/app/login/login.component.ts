@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { USERS } from '../mock-user';
-import { getCookieAuth } from '../AuthService';
+import { getCookieAuth,getCookieRole,getCookieUsername,getCookiePassword } from '../AuthService';
 
 @Component({
   selector: 'app-login',
@@ -26,51 +26,18 @@ export class LoginComponent {
     this.password = value;
   }
 
-  //Read Cookie
-
-
-  public getCookieUsername() {
-    let name = "localUsername" + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-  public getCookiePassword() {
-    let name = "localPassword" + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
+  
 
   public onSubmit(){
     let hit = false; //check if there are any hits
     let userId = -1;
 
-    
-    
-    if(this.username == this.getCookieUsername() 
-    && this.password == this.getCookiePassword())
+    if(this.username == getCookieUsername() 
+    && this.password == getCookiePassword())
     {
       hit = true;
-      document.cookie = "LoggedInAs="+this.username;
+      document.cookie = "LoggedInAs="+this.username;// Local
+      document.cookie = "LoggedInRole="+getCookieRole();
     }
 
     for(let i = 0; i < USERS.length; i++)
@@ -79,7 +46,8 @@ export class LoginComponent {
         && this.password == USERS[i].password)
         {
           hit = true;
-          document.cookie = "LoggedInAs="+this.username; //Writes to cookie Auth
+          document.cookie = "LoggedInAs="+this.username; // Mock
+          document.cookie = "LoggedInRole="+USERS[i].role;
         }
     }
     if(hit)

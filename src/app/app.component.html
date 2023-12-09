@@ -6,10 +6,15 @@
           <li><a routerLink="/restaurants">Restaurants</a></li>
           <li *ngIf="loggedIn"><a routerLink="/cart">Cart</a></li>
           <li *ngIf="loggedIn"><a routerLink="/records">Order Records</a></li>
-          <li *ngIf="loggedIn"><a routerLink="/tracking">Order Tracking</a></li>  
+          <li *ngIf="loggedIn"><a routerLink="/tracking">Order Tracking</a></li> 
+          
+          
+          <!--Float Right Items Stack From The Right-->
             <li *ngIf="loggedIn == false" style="float: right;"><a routerLink="/login">Login</a></li>
             <li *ngIf="loggedIn == false" style="float: right;"><a routerLink="/signup">Sign Up</a></li>
+            
             <li *ngIf="loggedIn" style="float: right;"><a href (click)="logout()">Log Out</a></li>
+            <li *ngIf="loggedIn" style="float: right;"><a routerLink="/profile">{{loggedInRole}} {{loggedInName}}</a></li>
         </ul>
       </nav>
 </header>
