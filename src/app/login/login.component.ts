@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { USERS } from '../mock-user';
-import { getCookieAuth,getCookieRole,getCookieUsername,getCookiePassword } from '../AuthService';
+import { getCookieAuth,getCookieRole,getCookieUsername,getCookiePassword,getCookieLocRole } from '../AuthService';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +37,7 @@ export class LoginComponent {
     {
       hit = true;
       document.cookie = "LoggedInAs="+this.username;// Local
-      document.cookie = "LoggedInRole="+getCookieRole();
+      document.cookie = "LoggedInRole="+getCookieLocRole();
     }
 
     for(let i = 0; i < USERS.length; i++)
