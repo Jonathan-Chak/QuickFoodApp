@@ -1,67 +1,22 @@
 <div class="container">
+    <span> Orders for customer id {{cust_id}}</span>
     <ol>
-        <li>
-            date:_____
-            <br>
-            items:
-            <br>
-            ---------------
-            <br>
-            ---------------
-        </li>
-        <li>
-            date:_____
-            <br>
-            items:
-            <br>
-            ---------------
-            <br>
-            ---------------
-        </li>
-        <li>
-            date:_____
-            <br>
-            items:
-            <br>
-            ---------------
-            <br>
-            ---------------
-        </li>
-        <li>
-            date:_____
-            <br>
-            items:
-            <br>
-            ---------------
-            <br>
-            ---------------
-        </li>
-        <li>
-            date:_____
-            <br>
-            items:
-            <br>
-            ---------------
-            <br>
-            ---------------
-        </li>
-        <li>
-            date:_____
-            <br>
-            items:
-            <br>
-            ---------------
-            <br>
-            ---------------
-        </li>
-        <li>
-            date:_____
-            <br>
-            items:
-            <br>
-            ---------------
-            <br>
-            ---------------
-        </li>
+        
+            <li *ngFor="let item of filtered_order_list; index as i;" style="border: 20px; list-style-type: none;">
+                <fieldset>
+                <span  style="margin: 10px;">Order ID: {{item.id}}</span>
+                <div  style="margin: 10px;">List of Items: 
+                    <ul>
+                        <li *ngFor="let f_item of filtered_order_names[i]; index as e;" >
+                            <span>
+                                {{f_item}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <span style="margin: 10px;">Total: {{item.total.toFixed(2)}} </span>
+            </fieldset>
+            </li>
+        
     </ol>
 </div>

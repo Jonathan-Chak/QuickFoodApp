@@ -2,7 +2,7 @@ import { Component,Input } from '@angular/core';
 import { CommonModule,NgSwitch } from '@angular/common';
 import { Cart } from '../cart';
 import { CARTS } from '../mock-carts';
-import { getCookieAuth } from '../AuthService';
+import { getLoggedInUsername } from '../AuthService';
 import { USERS } from '../mock-user';
 
 @Component({
@@ -17,7 +17,7 @@ import { USERS } from '../mock-user';
 export class CartComponent {
   cartid = 1;
   cart = CARTS[this.cartid]
-  username = getCookieAuth();
+  username = getLoggedInUsername();
 
   constructor()
   {

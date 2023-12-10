@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { USERS } from '../mock-user';
-import { getCookieUsername,getCookiePassword,getCookieAuth,getCookieRole } from '../AuthService';
+import { getLocalUsername,getLocalPassword,getLoggedInUsername,getLoggedInRole } from '../AuthService';
 
 @Component({
   selector: 'app-signup',
@@ -50,7 +50,7 @@ export class SignupComponent {
             hit = true;
           }
       }
-      if(this.username !=getCookieUsername() && hit == false) //check if username is not repeated then literally replaces it
+      if(this.username !=getLocalUsername() && hit == false) //check if username is not repeated then literally replaces it
       {
         var date = new Date();
         date.setTime(date.getTime() + (2 * 24 * 60 * 60 * 1000));

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { USERS } from '../mock-user';
-import { getCookieAuth, getCookieRole,getCookiePassword,getCookieUsername } from '../AuthService';
+import { getLoggedInUsername, getLoggedInRole,getLocalPassword,getLocalUsername,getLoggedInId } from '../AuthService';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,15 +18,15 @@ export class UserProfileComponent {
   
   constructor()
   {
-    if(getCookieAuth() != "")//if logged in
+    if(getLoggedInUsername() != "")//if logged in
     {
-      this.loggedInRole = getCookieRole();
-      this.loggedInName = getCookieAuth();
+      this.loggedInRole = getLoggedInRole();
+      this.loggedInName = getLoggedInUsername();
 
-      if(this.loggedInName == getCookieUsername())
+      if(this.loggedInName == getLocalUsername())
       {
-        this.userid = -1;
-        this.password = getCookiePassword();
+        this.userid = Number(getLoggedInId());
+        this.password = getLocalPassword();
       }
       else
       {

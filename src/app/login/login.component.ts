@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { USERS } from '../mock-user';
-import { getCookieAuth,getCookieRole,getCookieUsername,getCookiePassword,getCookieLocRole } from '../AuthService';
+import { getLoggedInUsername,getLoggedInRole,getLocalUsername,getLocalPassword,getLocalRole } from '../AuthService';
 
 @Component({
   selector: 'app-login',
@@ -32,12 +32,13 @@ export class LoginComponent {
     let hit = false; //check if there are any hits
     let userId = -1;
 
-    if(this.username == getCookieUsername() 
-    && this.password == getCookiePassword())
+    if(this.username == getLocalUsername() 
+    && this.password == getLocalPassword())
     {
       hit = true;
       document.cookie = "LoggedInAs="+this.username;// Local
-      document.cookie = "LoggedInRole="+getCookieLocRole();
+      document.cookie = "LoggedInRole="+getLocalRole();
+      document.cookie = "LoggedInId="+"-1";//set local id to -1
     }
 
     for(let i = 0; i < USERS.length; i++)
@@ -48,11 +49,12 @@ export class LoginComponent {
           hit = true;
           document.cookie = "LoggedInAs="+this.username; // Mock
           document.cookie = "LoggedInRole="+USERS[i].role;
+          document.cookie = "LoggedInId="+USERS[i].id;
         }
     }
     if(hit)
     {
-      this.report = "Log In Successful as user: " + getCookieAuth();
+      this.report = "Log In Successful as user: " + getLoggedInUsername();
         setTimeout(myURL, 1000);//wait 1 second
         function myURL() {
           window.location.href = "/restaurants";//redirects

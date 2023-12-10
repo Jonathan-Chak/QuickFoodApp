@@ -4,7 +4,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { routes } from './app.routes';
 import { CartComponent } from './cart/cart.component';
-import { getCookieAuth, getCookieRole } from './AuthService';
+import { getLoggedInUsername, getLoggedInRole } from './AuthService';
 
 @Component({
   standalone: true,
@@ -20,11 +20,11 @@ export class AppComponent {
   loggedInName ="";
   constructor()
   {
-    if(getCookieAuth() != "")
+    if(getLoggedInUsername() != "")
     {
       this.loggedIn = true;
-      this.loggedInRole = getCookieRole();
-      this.loggedInName = getCookieAuth();
+      this.loggedInRole = getLoggedInRole();
+      this.loggedInName = getLoggedInUsername();
     }
   }
 

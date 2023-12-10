@@ -1,4 +1,4 @@
-export function getCookieAuth() {
+export function getLoggedInUsername() {
   let name = "LoggedInAs" + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(';');
@@ -13,7 +13,7 @@ export function getCookieAuth() {
   }
   return "";
 }
-export function getCookieRole() {
+export function getLoggedInRole() {
 let name = "LoggedInRole" + "=";
 let decodedCookie = decodeURIComponent(document.cookie);
 let ca = decodedCookie.split(';');
@@ -28,7 +28,7 @@ return c.substring(name.length, c.length);
 }
 return "";
 }
-export function getCookieUsername() {
+export function getLocalUsername() {
 let name = "localUsername" + "=";
 let decodedCookie = decodeURIComponent(document.cookie);
 let ca = decodedCookie.split(';');
@@ -43,7 +43,7 @@ if (c.indexOf(name) == 0) {
 }
 return "";
 }
-export function getCookiePassword() {
+export function getLocalPassword() {
 let name = "localPassword" + "=";
 let decodedCookie = decodeURIComponent(document.cookie);
 let ca = decodedCookie.split(';');
@@ -58,7 +58,7 @@ if (c.indexOf(name) == 0) {
 }
 return "";
 }
-export function getCookieLocRole() {
+export function getLocalRole() {
   let name = "localRole" + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(';');
@@ -73,3 +73,20 @@ export function getCookieLocRole() {
   }
   return "";
   }
+
+export function getLoggedInId()
+{
+  let name = "LoggedInId" + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+  let c = ca[i];
+  while (c.charAt(0) == ' ') {
+    c = c.substring(1);
+  }
+  if (c.indexOf(name) == 0) {
+    return c.substring(name.length, c.length);
+  }
+  }
+  return "";
+}
