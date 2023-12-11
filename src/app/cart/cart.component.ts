@@ -17,20 +17,14 @@ import { Item } from '../item';
 
 
 export class CartComponent {
-  userId = getLoggedInId();
-  userCart:Cart = { id: 99, cust_id: 99, f_id_list:[] };
+  userId:number = Number(getLoggedInId());
+  userCart:Cart = CARTS[this.userId];
   cartItemNames:string[]=[];
-  
+  total:number =0;
+  menuItems = ITEMS;
+
   constructor()
   {
-    for(let i = 0; i < CARTS.length; i++)
-    {
-      if(CARTS[i].cust_id == Number(this.userId))
-      {
-        this.userCart = CARTS[i];
-      }
-    }
-
     //find name instead of ID and push to seperate array
       for(let ite = 0; ite < this.userCart.f_id_list.length; ite++)// for each Item in Item Id List
       {
@@ -44,6 +38,7 @@ export class CartComponent {
         }
         this.cartItemNames.push(nameToAdd);
       }
+      this.CalcTotal();
   }
   public RemoveItem(item:string)
   {
@@ -62,13 +57,34 @@ export class CartComponent {
         const index1 = this.userCart.f_id_list.indexOf(idToDel, 0);
         if (index1 > -1) {
           this.userCart.f_id_list.splice(index1, 1);
-          
         }
+        this.CalcTotal();
   }
   public RemoveAll()
   {
     this.userCart.f_id_list = [];
     this.cartItemNames = [];
+    this.CalcTotal();
   }
-  
+  checkout(): void {
+    
+    console.log('Checkout clicked!');
+    
+  }
+
+  CalcTotal()
+  {
+    this.total = 0;
+      for(let ite = 0; ite < this.userCart.f_id_list.length; ite++)// for each Item in Item Id List
+      {
+        for(let mIte = 0; mIte < ITEMS.length ; mIte++) //loop through all existing menu items
+        {
+          if(ITEMS[mIte].id == this.userCart.f_id_list[ite])// if ID matches
+          {
+            this.total += ITEMS[mIte].price;
+          }
+        }
+      }
+      this.total.toFixed(2);
+  }
 }

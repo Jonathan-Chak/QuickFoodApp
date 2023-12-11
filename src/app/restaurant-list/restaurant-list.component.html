@@ -1,21 +1,11 @@
 <div class="container">
-    <input type="text" placeholder="Search by name"> <button>Search</button>
     <h2>Restaruant List</h2>
     <ul class="restaurants">
-        <li>
-            <button id="1" (click)="goToMenu1()"> KFC</button>
-        </li>
-        <li>
-            <button id="2" (click)="goToMenu2()"> Papa Johns</button>
-        </li>
-        <li>
-            <button id="3" (click)="goToMenu3()"> Subway</button>
-        </li>
-        <li>
-            <button id="4" (click)="goToMenu4()"> Tim Hortons</button>
-        </li>
-        <li>
-            <button id="5" (click)="goToMenu5()"> Ruby Tuesday</button>
+        <li *ngFor="let item of restaurants;  index as i;">
+            <button (click)="goToMenu(item.id)">
+                {{item.name}}<span style="font-size:medium;">----rating: {{item.rating}} </span>
+            </button>
+            
         </li>
     </ul>
 </div>

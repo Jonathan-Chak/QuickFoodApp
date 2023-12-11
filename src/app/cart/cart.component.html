@@ -1,11 +1,12 @@
 <h2>Cart</h2>
 Customer Id: {{userId}}
 <ul class="items">
-    <li *ngFor="let item of cartItemNames;  index as i;">
+    <li *ngFor="let item of cartItemNames; index as i;">
         <span>{{item}}</span>
+        <span style="margin-left: 10px;">${{menuItems[userCart.f_id_list[i]].price}}</span>
         <button (click)="RemoveItem(item)">Remove</button>
     </li>
 </ul>
-Subtotal:----
+Subtotal: {{total.toFixed(2)}}
 <button (click)="RemoveAll()">Remove All</button>
-<button>Checkout</button>
+<button (click)="checkout()">Checkout</button>

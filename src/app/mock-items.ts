@@ -27,7 +27,12 @@ export const ITEMS: Item[] = [
     {id: 23, restaurant: "Ruby Tuesday", name: "T-BONE STEAK", price: 0.99 },
     {id: 24, restaurant: "Ruby Tuesday", name: "STUFFED MUSHROOMS APPETIZER", price: 15 },
     {id: 25, restaurant: "Ruby Tuesday", name: "LOADED POTATO SKINS", price: 15 },
-    {id: 26, restaurant: "Ruby Tuesday", name: "RIB EYE*, RIBS, AND CRISPY SHRIMP COMBO", price: 25 }
+    {id: 26, restaurant: "Ruby Tuesday", name: "RIB EYE*, RIBS, AND CRISPY SHRIMP COMBO", price: 25 },
+    { id: 27, restaurant: 'Starbucks', name: 'Caramel Macchiato', price: 4.5 },
+    { id: 28, restaurant: 'Chipotle', name: 'Burrito Bowl', price: 9 },
+    { id: 29, restaurant: 'Panera Bread', name: 'Bacon Turkey Bravo Sandwich', price: 7.5 },
+    { id: 30, restaurant: 'Dunkin', name: 'Boston Kreme Donut', price: 2 },
+    { id: 31, restaurant: 'Taco Bell', name: 'Crunchwrap Supreme', price: 6 }
     
     
 
