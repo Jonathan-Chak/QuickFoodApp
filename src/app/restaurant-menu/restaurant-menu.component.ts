@@ -5,6 +5,9 @@ import { RESTAURANTS } from '../mock-restaurants';
 import { Restaurant } from '../restaurant';
 import { ITEMS } from '../mock-items';
 import { Item } from '../item';
+import { CartComponent } from '../cart/cart.component'; 
+import { CARTS } from '../mock-carts';
+import { getLoggedInId } from '../AuthService';
 
 @Component({
   selector: 'app-restaurant-menu',
@@ -21,6 +24,8 @@ export class RestaurantMenuComponent {
   menuNames: string[] = [];
   menuPrices: number[] = [];
   menu: Item[] = [];
+
+
 constructor()
 {
   this.checkNumber();
@@ -50,5 +55,10 @@ constructor()
       }
     }
   }
-  
+  public AddItem(item:Item)
+  {
+    CARTS[Number(getLoggedInId())].f_id_list.push(item.id);
+  }
+
+
 }

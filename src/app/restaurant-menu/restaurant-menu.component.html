@@ -4,7 +4,7 @@
 
     <ul>
         <li *ngFor="let item of menu; index as i;" style="border: 20px; list-style-type: none;">
-            <button  style="margin: 10px;">{{item.name}}</button>
+            <button (click)="AddItem(item)" style="margin: 10px;">{{item.name}}</button>
             <span  style="margin: 10px;">${{item.price}}</span>
         </li>
     </ul>
